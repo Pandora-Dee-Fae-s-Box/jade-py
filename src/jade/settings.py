@@ -19,7 +19,7 @@ def config_path() -> Path:
     """Where the config is, looked up when needed ($JADE_CONFIG can change after import, e.g. in tests)."""
     return Path(os.environ.get("JADE_CONFIG", Path.home() / ".config" / "jade" / "config.toml"))
 
-ProviderName = Literal["ollama", "ollama-cloud", "llamacpp", "openai", "groq", "openrouter", "lmstudio", "vllm", "deepseek", "mistral", "gemini", "together", "custom"]
+ProviderName = Literal["ollama", "ollama-cloud", "llamacpp", "openai", "groq", "openrouter", "lmstudio", "vllm", "deepseek", "mistral", "gemini", "together", "xai", "custom"]
 
 # OpenAI-compatible endpoints by name (key comes from settings.api_key or the env var named here)
 OPENAI_PRESETS: dict[str, tuple[str, str]] = {
@@ -30,6 +30,7 @@ OPENAI_PRESETS: dict[str, tuple[str, str]] = {
     "mistral": ("https://api.mistral.ai/v1", "MISTRAL_API_KEY"),
     "gemini": ("https://generativelanguage.googleapis.com/v1beta/openai", "GEMINI_API_KEY"),
     "together": ("https://api.together.xyz/v1", "TOGETHER_API_KEY"),
+    "xai": ("https://api.x.ai/v1", "XAI_API_KEY"),
     "llamacpp": ("http://localhost:8080/v1", ""),
     "lmstudio": ("http://localhost:1234/v1", ""),
     "vllm": ("http://localhost:8000/v1", ""),
